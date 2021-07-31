@@ -53,3 +53,4 @@ Node* Node::DeleteAfter()
 	next = temp->next;
 	return(temp);
 }
+

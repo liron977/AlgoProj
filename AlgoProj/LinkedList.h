@@ -16,8 +16,10 @@ public:
 	Node* First() const;
 	Node* Last() const;
 	void Print() const;
-
+	bool isExist(int value) const;
 	void InsertToEnd(int value);
+	void deleteNode(int value);
+	void DeleteAllElements();
 
 private:
 	// members
@@ -25,7 +27,7 @@ private:
 	Node* tail;
 
 	//private functions
-	void DeleteAllElements();
+
 };
 
 #endif//! _LIST_H

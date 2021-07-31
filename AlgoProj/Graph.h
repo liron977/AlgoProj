@@ -12,7 +12,7 @@ class Graph
 public:
 	//object functions
 	Graph(int n);
-	Graph(const Graph& other);
+	//Graph(const Graph& other);
 	~Graph();
 
 	void MakeEmptyGraph(int n);
@@ -21,8 +21,12 @@ public:
 
 	bool IsVertexInGraph(int u) const;
 
-	void AddEdge(int u, int v, int c);
+	void AddEdge(int u, int v);
 	void RemoveEdge(int u, int v);
+	void ReadGraph();
+	void printGraph();
+	bool isEmpty();
+	LinkedList Adj(int is);
 
 	// geters  
 	int GetEdgeCapcity(int u, int v) const;
@@ -42,11 +46,11 @@ public:
 
 private:
 	// members
-	int* adjList = nullptr; // we assume all capacities are integers  
+	LinkedList* adjList = nullptr; // we assume all capacities are integers  
 	int vertexNum;
 
 	//private function
-	void DeleteAdjMatrix();
+	void DeleteAdjList();
 };
 #endif
 
