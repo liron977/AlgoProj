@@ -14,5 +14,6 @@ int main()
 	Graph g(n);
 	g.ReadGraph(n);
 	g.printGraph();
+	g.Algo(u);
 
 }

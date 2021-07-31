@@ -11,6 +11,7 @@ using namespace std;
 
 
 #define INDEX_IN_GRAPH -1
+#define NO_PARENT -1
 
 class Graph
 {
@@ -42,6 +43,9 @@ public:
 	void SetVertexNum(int newVertexNum);
 	void SetEdgeCapacity(int u, int v, int newCapacity);
 	void BFS(int** p, int** d, int sourceVertex);
+	void Algo(int source);
+
+
 
 	//operators overloading 
 	/*bool operator ==(const Graph& other) const;
@@ -53,11 +57,16 @@ private:
 	// members
 	LinkedList* adjList = nullptr; // we assume all capacities are integers  
 	int vertexNum;
+	void removeEdgeOfNonConsecutiveNumbersVertex(int* d);
+	//const int INFINITY_VAL = numeric_limits<int>::max();// max value of int is bigger than any int value , therefor we can refer it as infinity  
+	//const int MINUS_INFINITY_VAL = numeric_limits<int>::min();// min value of int is smaller than any int value , therefor we can refer it as minus infinity  
 
+	
 	//private function
 	void DeleteAdjList();
 
 	string inputFileName;
+
 
 
 };
