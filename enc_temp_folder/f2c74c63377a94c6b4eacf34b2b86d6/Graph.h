@@ -3,7 +3,6 @@
 
 #include <string>
 #include "LinkedList.h"
-#include "Queue.h"
 #include <fstream>
 #include <cstring>
 #include <string>
@@ -41,7 +40,6 @@ public:
 	void SetAdjList(LinkedList* newAdjList);
 	void SetVertexNum(int newVertexNum);
 	void SetEdgeCapacity(int u, int v, int newCapacity);
-	void BFS(int** p, int** d, int sourceVertex);
 
 	//operators overloading 
 	/*bool operator ==(const Graph& other) const;

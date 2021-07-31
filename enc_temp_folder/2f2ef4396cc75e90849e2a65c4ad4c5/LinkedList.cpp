@@ -74,6 +74,7 @@ void LinkedList::DeleteAllElements()
 
 		currNode = nextNode;
 	}
+	delete this;
 }
 
 // print linked list's values

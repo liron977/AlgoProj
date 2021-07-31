@@ -109,7 +109,7 @@ void Graph::DeleteAdjList()
 		adjList[i].DeleteAllElements();
 	}
 	vertexNum = 0;
-	adjList = nullptr;
+	//adjList = nullptr;
 	
 }
 
@@ -247,51 +247,4 @@ void Graph::ReadGraph(int n)
 	//		i = 0;
 	//		temp = num;
 	//}
-}
-
-//find path from 'sourceVertex' vertex in given graph using BFS . return 2 output parameters :arrays p and d  .
-// for vertex v the value p[v] is the parent of v in BFS tree , and -1 (NO_PARENT)if it doesn't has one . There is no vertex '0' therefor p[0] is non relevant (used for readability)
-// for vertex v the value d[v] is the length of the shortest path from sourceVertex to v ,and infinity if there isn't such path .There is no vertex '0' therefor d[0] is non relevant (used for readability)
-void BFS(int** p, int** d, const Graph& graph, int sourceVertex)
-{
-	Queue Q;
-	int u, v;
-	LinkedList* uAdjList;
-	Node* currListNode;
-	int vertexNum = graph.GetVertexNum();
-
-	//// for vertex v the value pArr[v] is the parent of v in BFS tree , and -1 (NO_PARENT)if it doesn't has one . There is no vertex '0' therefor pArr[0] is non relevant (used for readability)
-	//// for vertex v the value dArr[v] is the length of the shortest path from sourceVertex to v ,and infinity if there isn't such path .There is no vertex '0' therefor dArr[0] is non relevant (used for readability)
-	int* pArr = *p;
-	int* dArr = *d;
-
-	for (int i = 0; i <= vertexNum; i++) // run over all vertexs .( There is no vertex '0' used to readability)
-	{
-		dArr[i] = INFINITY_VAL;
-		pArr[i] = NO_PARENT;
-	}
-
-	Q.EnQueue(sourceVertex);
-	dArr[sourceVertex] = 0;
-
-	while (!Q.IsEmpty())
-	{
-		u = Q.DeQueue();
-		uAdjList = graph.GetAdjList(u);
-		currListNode = (*uAdjList).First();
-
-		while (currListNode != nullptr)
-		{
-			v = currListNode->GetData();
-			if (dArr[v] == INFINITY_VAL)
-			{
-				dArr[v] = dArr[u] + 1;
-				pArr[v] = u;
-				Q.EnQueue(v);
-			}
-			currListNode = currListNode->GetNext();
-		}
-
-		delete uAdjList;
-	}
 }
