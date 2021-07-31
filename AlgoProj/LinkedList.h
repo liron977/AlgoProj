@@ -15,11 +15,12 @@ public:
 	bool IsEmpty() const;
 	Node* First() const;
 	Node* Last() const;
-	void Print() const;
+	void print(int key) const;
 	bool isExist(int value) const;
 	void InsertToEnd(int value);
 	void deleteNode(int value);
 	void DeleteAllElements();
+	int getLength()const ;
 
 private:
 	// members

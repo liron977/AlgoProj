@@ -1,6 +1,7 @@
 #include "Graph.h"
 
 #include <cstring>
+#include <iostream>
 
 //ctor
 Graph::Graph(int n)
@@ -61,12 +62,13 @@ bool Graph::IsAdjacent(int u, int v) const
 // return pointer to linked list of the neighbours of vertex u 
 LinkedList* Graph::GetAdjList(int u) const
 {	
+	LinkedList* tempAdjList = new LinkedList;
 		if (IsVertexInGraph)
 		{
-			return &(adjList[u]);
+			tempAdjList =&(adjList[u]);
 		}	
 
-	return NULL;
+	return tempAdjList;
 }
 
 //check if given integer is a vertex in current graph
@@ -76,7 +78,7 @@ bool Graph::IsVertexInGraph(int u) const
 }
 
 // add edge (u,v)  
-void Graph::AddEdge(int u, int v)
+int Graph::AddEdge(int u, int v)
 {
 	//TODO-Checks internal loops 
 	if (IsVertexInGraph(u))
@@ -84,8 +86,10 @@ void Graph::AddEdge(int u, int v)
 		if (!adjList[u].isExist(v))
 		{
 			adjList[u].InsertToEnd(v);
+			return 1;
 		}
 	}
+	return 0;
 }
 
 // remove edge (u,v) .(assuming there are vertexs u and v in current graph)
@@ -107,16 +111,10 @@ void Graph::DeleteAdjList()
 	adjList = nullptr;
 }
 
-//return the capacity of the edge (u,v) . return 0 if there isn't such edge . (assuming there are verttexs u and v in current graph)
-int Graph::GetEdgeCapcity(int u, int v) const
-{
-	return this->adjMatrix[u + INDEX_IN_GRAPH][v + INDEX_IN_GRAPH];
-}
-
 //getters
-int** Graph::GetAdjMatrix() const
+LinkedList* Graph::GetAdjList() const
 {
-	return adjMatrix;
+	return adjList;
 }
 
 int Graph::GetVertexNum() const
@@ -125,68 +123,112 @@ int Graph::GetVertexNum() const
 }
 
 //setters
-void Graph::SetAdjMatrix(int** newAdjMatrix)
+void Graph::SetAdjList(LinkedList* newAdjList)
 {
-	this->adjMatrix = newAdjMatrix;
+	this->adjList = newAdjList;
 }
 
 void Graph::SetVertexNum(int newVertexNum)
 {
 	this->vertexNum = newVertexNum;
 }
-
-void Graph::SetEdgeCapacity(int u, int v, int newCapacity)
-{
-	this->adjMatrix[u + INDEX_IN_GRAPH][v + INDEX_IN_GRAPH] = newCapacity;
-}
-
 //operators overloading
-bool Graph::operator==(const Graph& other) const
+//bool Graph::operator==(const Graph& other) const
+//{
+//	if (this->vertexNum != other.vertexNum)
+//	{
+//		return false;
+//	}
+//
+//	for (int i = 0; i < this->vertexNum; i++)
+//	{
+//		for (int j = 0; j < this->vertexNum; j++)
+//		{
+//			if (this->adjMatrix[i][j] != other.adjMatrix[i][j])
+//			{
+//				return false;
+//			}
+//		}
+//	}
+//
+//	return true;
+//}
+//
+//bool Graph::operator!=(const Graph& other) const
+//{
+//	return !(*this == other);
+//}
+//
+//const Graph& Graph::operator=(const Graph& other)
+//{
+//	if (this != &other) // check self- assignment
+//	{
+//		//delete current adjMatrix 
+//		DeleteAdjMatrix();
+//
+//		this->vertexNum = other.vertexNum;
+//		adjMatrix = new int* [this->vertexNum];
+//		for (int i = 0; i < this->vertexNum; ++i)
+//			adjMatrix[i] = new int[this->vertexNum];
+//
+//		// Copy other's adjMatrix
+//		for (int i = 0; i < this->vertexNum; i++)
+//		{
+//			memcpy(adjMatrix[i], other.adjMatrix[i], sizeof(int) * this->vertexNum);
+//		}
+//	}
+//	return *this;
+//}
+bool Graph::isEmpty()
 {
-	if (this->vertexNum != other.vertexNum)
+	if (vertexNum == 0)
 	{
-		return false;
+		return 1;
 	}
-
-	for (int i = 0; i < this->vertexNum; i++)
+	return 0;
+}
+void Graph::printGraph()
+{
+	for (int i = 0; i < vertexNum; i++)
 	{
-		for (int j = 0; j < this->vertexNum; j++)
+		adjList[i].print(i + 1);
+	}
+}
+void Graph::ReadGraph(int n)
+{
+	char str[256];
+	cin >> inputFileName;
+	ifstream myReadFile(inputFileName, ios::in);
+	int count = 0, j = 0, i = 0;
+	int num;
+	char curr_char,curr;
+	int temp;
+	if (myReadFile.is_open()) {
+		for (j = 0; j < n; j++)
 		{
-			if (this->adjMatrix[i][j] != other.adjMatrix[i][j])
+
+			myReadFile.get(curr_char);
+			if (myReadFile.eof())
+				int x = 1;
+			while (((curr_char != ' ') && (curr_char != '\n') && (!myReadFile.eof()))) //here we get each of the number characters
 			{
-				return false;
+
+				str[i] = curr_char;
+				myReadFile.get(curr_char);
+				i++;
 			}
+			str[i] = '\n';
+			if (str[0] == '\n')
+			{
+				continue;
+			}
+			num = int(atof(str)); //we got a valid number and change its type to int 
+			if (j % 2 == 0 && j != 0)
+			{
+				AddEdge(num, temp);
+			}
+			i = 0;
+			temp = num;
 		}
 	}
-
-	return true;
 }
-
-bool Graph::operator!=(const Graph& other) const
-{
-	return !(*this == other);
-}
-
-const Graph& Graph::operator=(const Graph& other)
-{
-	if (this != &other) // check self- assignment
-	{
-		//delete current adjMatrix 
-		DeleteAdjMatrix();
-
-		this->vertexNum = other.vertexNum;
-		adjMatrix = new int* [this->vertexNum];
-		for (int i = 0; i < this->vertexNum; ++i)
-			adjMatrix[i] = new int[this->vertexNum];
-
-		// Copy other's adjMatrix
-		for (int i = 0; i < this->vertexNum; i++)
-		{
-			memcpy(adjMatrix[i], other.adjMatrix[i], sizeof(int) * this->vertexNum);
-		}
-	}
-	return *this;
-}
-
-
-

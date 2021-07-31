@@ -1,9 +1,13 @@
 #ifndef _GRAPH_H
 #define _GRAPH_H
 
+#include <string>
 #include "LinkedList.h"
-
+#include <fstream>
 #include <cstring>
+#include <string>
+using namespace std;
+
 
 #define INDEX_IN_GRAPH -1
 
@@ -21,27 +25,26 @@ public:
 
 	bool IsVertexInGraph(int u) const;
 
-	void AddEdge(int u, int v);
+	int AddEdge(int u, int v);
 	void RemoveEdge(int u, int v);
-	void ReadGraph();
+	void ReadGraph(int n);
 	void printGraph();
 	bool isEmpty();
-	LinkedList Adj(int is);
 
 	// geters  
 	int GetEdgeCapcity(int u, int v) const;
-	int** GetAdjMatrix() const;
+	LinkedList* GetAdjList() const;
 	int GetVertexNum() const;
 
 	//setters 
-	void SetAdjMatrix(int** newAdjMatrix);
+	void SetAdjList(LinkedList* newAdjList);
 	void SetVertexNum(int newVertexNum);
 	void SetEdgeCapacity(int u, int v, int newCapacity);
 
 	//operators overloading 
-	bool operator ==(const Graph& other) const;
+	/*bool operator ==(const Graph& other) const;
 	bool operator !=(const Graph& other) const;
-	const Graph& operator= (const Graph& other);
+	const Graph& operator= (const Graph& other);*/
 
 
 private:
@@ -51,6 +54,10 @@ private:
 
 	//private function
 	void DeleteAdjList();
+
+	string inputFileName;
+
+
 };
 #endif
 

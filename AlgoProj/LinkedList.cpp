@@ -76,16 +76,16 @@ void LinkedList::DeleteAllElements()
 }
 
 // print linked list's values
-void LinkedList::Print() const
+void LinkedList::print(int key) const
 {
 	Node* currentNode = this->head;
 	while (currentNode)
 	{
+		cout << key;
+		cout << ",";
 		cout << currentNode->GetData();
 
 		currentNode = currentNode->GetNext();
-		if (currentNode != nullptr)
-			cout << ", ";
 
 	}
 }
@@ -136,6 +136,15 @@ void LinkedList::deleteNode(int value)
 		delete temp;
 	}
 
-
 }
-
+int LinkedList::getLength()const
+{
+	int count = 0;
+	Node* currentNode = this->head;
+	while (currentNode)
+	{
+		count++;
+		currentNode = currentNode->GetNext();
+	}
+	return count;
+}
