@@ -10,6 +10,8 @@ LinkedList::LinkedList()
 	MakeEmpty();
 }
 
+
+
 // dtor 
 LinkedList::~LinkedList()
 {
@@ -104,18 +106,23 @@ bool LinkedList::isExist(int value) const
 	}
 	return false;
 }
-void LinkedList::deleteNode(int value)
+Node* LinkedList::deleteNode(int value)
 {
 	Node* currentNode = this->head;
-	Node* temp = this->head;
+	Node* temp = currentNode;
 	Node* prev = NULL;
 	// If head node itself holds
 	// the value to be deleted
 	if (currentNode->GetData() == value && currentNode != NULL)
 	{
-		this->head->setNext(temp->GetNext());
+		this->head=head->GetNext();
+		if (temp->GetNext()== NULL)
+		{
+			this->tail = NULL;
+		}
 		delete temp;
-		return;
+		return this->head;
+		
 	}
 	// Else Search for the key to be deleted,
 	// keep track of the previous node as we
@@ -130,13 +137,17 @@ void LinkedList::deleteNode(int value)
 
 		// If key was not present in linked list
 		if (temp == NULL)
-			return;
+			return NULL;
 
 		// Unlink the node from linked list
 		prev->setNext(temp);
-
+		if (temp->GetNext() == NULL)
+		{
+			this->tail = NULL;
+		}
 		// Free memory
 		delete temp;
+		return prev;
 	}
 
 }

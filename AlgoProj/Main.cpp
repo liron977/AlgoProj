@@ -13,7 +13,10 @@ int main()
 	cin >> v;
 	Graph g(n);
 	g.ReadGraph(n);
-	g.printGraph();
+	//g.printGraph();
 	g.Algo(u);
+	Graph gt(n);
+	g.createTransposeGraph(gt);
+	gt.printGraph();
 
 }

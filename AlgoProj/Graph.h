@@ -28,10 +28,11 @@ public:
 	bool IsVertexInGraph(int u) const;
 
 	int AddEdge(int u, int v);
-	void RemoveEdge(int u, int v);
+	Node* RemoveEdge(int u, int v);
 	void ReadGraph(int n);
 	void printGraph();
 	bool isEmpty();
+	void createTransposeGraph(Graph& newTransposeGraph);
 
 	// geters  
 	int GetEdgeCapcity(int u, int v) const;

@@ -95,9 +95,9 @@ int Graph::AddEdge(int u, int v)
 }
 
 // remove edge (u,v) .(assuming there are vertexs u and v in current graph)
-void Graph::RemoveEdge(int u, int v)
+Node* Graph::RemoveEdge(int u, int v)
 {
-	adjList[u].deleteNode(v);
+	return (adjList[u].deleteNode(v));
 }
 
 
@@ -305,9 +305,14 @@ void Graph::removeEdgeOfNonConsecutiveNumbersVertex(int* d)
 		{
 			if (d[currNode->GetData()-1] != d[i] + 1)
 			{
-				RemoveEdge(i, currNode->GetData()-1);
+				currNode=RemoveEdge(i, currNode->GetData());
+
 			}
+			else
+			{
 				currNode = currNode->GetNext();
+			}
+				
 		}
 	}
 }
@@ -321,4 +326,21 @@ void Graph::Algo(int source)
 	int* d = new int[vertexNum ];
 
 	BFS(&p, &d, source);
+	removeEdgeOfNonConsecutiveNumbersVertex(d);
+}
+void Graph::createTransposeGraph(Graph& newTransposeGraph)
+{
+	LinkedList* newTransposeAdjList = new LinkedList[vertexNum];
+	Node* currNode;
+	for (int i = 0; i < vertexNum; i++)
+	{
+		currNode = adjList[i].First();
+		while (currNode!=NULL)
+		{
+			newTransposeAdjList[currNode->GetData() - 1].InsertToEnd(i + 1);
+			currNode = currNode->GetNext();
+		}
+	}
+	newTransposeGraph.SetAdjList(newTransposeAdjList);
+
 }

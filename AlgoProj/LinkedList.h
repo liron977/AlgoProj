@@ -9,6 +9,7 @@ class LinkedList
 public:
 	//object functions
 	LinkedList();
+	LinkedList(const Node& other);
 	~LinkedList();
 
 	void MakeEmpty();
@@ -18,7 +19,7 @@ public:
 	void print(int key) const;
 	bool isExist(int value) const;
 	void InsertToEnd(int value);
-	void deleteNode(int value);
+	Node* deleteNode(int value);
 	void DeleteAllElements();
 	int getLength()const ;
 
