@@ -33,6 +33,8 @@ public:
 	void printGraph();
 	bool isEmpty();
 	void createTransposeGraph(Graph& newTransposeGraph);
+	void deleteUnaccessableEdgeFromSource(int* d);
+	void removeEdgeOfNonConsecutiveNumbersVertex(int* d);
 
 	// geters  
 	int GetEdgeCapcity(int u, int v) const;
@@ -58,7 +60,7 @@ private:
 	// members
 	LinkedList* adjList = nullptr; // we assume all capacities are integers  
 	int vertexNum;
-	void removeEdgeOfNonConsecutiveNumbersVertex(int* d);
+	
 	//const int INFINITY_VAL = numeric_limits<int>::max();// max value of int is bigger than any int value , therefor we can refer it as infinity  
 	//const int MINUS_INFINITY_VAL = numeric_limits<int>::min();// min value of int is smaller than any int value , therefor we can refer it as minus infinity  
 

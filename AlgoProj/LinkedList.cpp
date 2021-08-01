@@ -84,8 +84,9 @@ void LinkedList::print(int key) const
 	Node* currentNode = this->head;
 	while (currentNode)
 	{
+		cout << "     ";
 		cout << key;
-		cout << ",";
+		cout << "     ";
 		cout << currentNode->GetData() << endl;
 
 		currentNode = currentNode->GetNext();
@@ -113,7 +114,7 @@ Node* LinkedList::deleteNode(int value)
 	Node* prev = NULL;
 	// If head node itself holds
 	// the value to be deleted
-	if (currentNode->GetData() == value && currentNode != NULL)
+	if (currentNode != NULL&&currentNode->GetData() == value)
 	{
 		this->head=head->GetNext();
 		if (temp->GetNext()== NULL)
@@ -132,7 +133,7 @@ Node* LinkedList::deleteNode(int value)
 		while (temp != NULL && temp->GetData() != value)
 		{
 			prev = temp;
-			temp->setNext(temp->GetNext());
+			temp=temp->GetNext();
 		}
 
 		// If key was not present in linked list
@@ -140,13 +141,15 @@ Node* LinkedList::deleteNode(int value)
 			return NULL;
 
 		// Unlink the node from linked list
-		prev->setNext(temp);
+		prev->setNext(temp->GetNext());
 		if (temp->GetNext() == NULL)
 		{
 			this->tail = NULL;
+			
 		}
 		// Free memory
 		delete temp;
+
 		return prev;
 	}
 

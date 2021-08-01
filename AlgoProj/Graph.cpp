@@ -191,10 +191,10 @@ bool Graph::isEmpty()
 }
 void Graph::printGraph()
 {
+	cout << endl;
 	for (int i = 0; i < vertexNum; i++)
 	{
 		adjList[i].print(i + 1);
-		cout << endl;
 	}
 }
 void Graph::ReadGraph(int n)
@@ -327,6 +327,9 @@ void Graph::Algo(int source)
 
 	BFS(&p, &d, source);
 	removeEdgeOfNonConsecutiveNumbersVertex(d);
+
+
+
 }
 void Graph::createTransposeGraph(Graph& newTransposeGraph)
 {
@@ -343,4 +346,23 @@ void Graph::createTransposeGraph(Graph& newTransposeGraph)
 	}
 	newTransposeGraph.SetAdjList(newTransposeAdjList);
 
+}
+void Graph::deleteUnaccessableEdgeFromSource(int* d)
+{
+	for (int i = 0; i < vertexNum; i++)
+	{
+		if (d[i] == numeric_limits<int>::max())
+		{
+			for (int j = 0; j < vertexNum; j++)
+			{
+				if (!adjList[j].IsEmpty())
+				{
+					adjList[j].deleteNode(i + 1);
+				}
+				
+			}
+			adjList[i].MakeEmpty();
+	
+		}
+	}
 }
