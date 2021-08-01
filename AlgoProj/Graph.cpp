@@ -200,19 +200,38 @@ void Graph::printGraph()
 void Graph::ReadGraph(int n)
 {
 	int num1, num2;
-	for (int i = 0; i < 28; i+=2)
+	string readFileName;
+	string currNum1, currNum2;
+	cin >> readFileName;
+	size_t idx = 0;
+
+
+	/*for (int i = 0; i < 28; i+=2)
 	{
 		cin >> num1;
 		cin >> num2;
 		AddEdge(num1, num2);
 
+	}*/
+	std::fstream myfile(readFileName, std::ios_base::in);
+
+	while (!myfile.eof())
+	{
+		myfile >> currNum1;
+		myfile >> currNum2;
+		num1=stoi(currNum1, &idx);
+		num2=stoi(currNum2, &idx);
+
+		AddEdge(num1,num2);
+		
 	}
-	//char str[256];
-	//cin >> inputFileName;
-	//size_t found = inputFileName.find(".txt");
-	//if (found == string::npos)
-	//	inputFileName += ".txt";
-	////ifstream myReadFile(inputFileName, ios::in);
+
+	/*char str[256];
+	cin >> inputFileName;
+	size_t found = inputFileName.find(".txt");
+	if (found == string::npos)
+		inputFileName += ".txt";*/
+	//ifstream myReadFile(inputFileName, ios::in);
 	//std::fstream myReadFile(inputFileName, std::ios_base::in);
 	//if (!myReadFile.is_open()) {//If the file does not exist or any other reason why the file can not be opned 
 	//	cout<<"wrong";
