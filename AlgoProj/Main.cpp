@@ -7,6 +7,7 @@ using namespace std;
 
 int main()
 {
+	//T=5
 	Algorithm algo;
 	algo.shortPathAlgorithm();
 }
