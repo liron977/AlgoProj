@@ -84,9 +84,9 @@ void LinkedList::print(int key) const
 	Node* currentNode = this->head;
 	while (currentNode)
 	{
-		cout << "     ";
+		//cout << "     ";
 		cout << key;
-		cout << "     ";
+		cout << " ";
 		cout << currentNode->GetData() << endl;
 
 		currentNode = currentNode->GetNext();
