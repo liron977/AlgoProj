@@ -31,3 +31,22 @@ void Utils:: invalidInputMessage()
 	cout << "Invalid input";
 	exit(1);
 }
+void Utils::getGraphData(int& vertexNum, int& source, int& destination)
+{
+	
+	vertexNum = getInput();
+	if (vertexNum == -1)
+	{
+		invalidInputMessage();
+	}
+	source =getInput();
+	if (source == -1)
+	{
+		invalidInputMessage();
+	}
+	destination =getInput();
+	if (destination == -1)
+	{
+	 invalidInputMessage();
+	}
+}

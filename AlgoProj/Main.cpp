@@ -9,7 +9,7 @@ int main()
 {
 	int y = 5;
 	Algorithm algo;
-	algo.shortPathAlgorithm();
+	algo.executeShortPathAlgorithm();
 	return 0;
 	
 }

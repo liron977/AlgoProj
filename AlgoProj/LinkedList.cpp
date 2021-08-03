@@ -25,8 +25,8 @@ void LinkedList::MakeEmpty()
 	{
 		DeleteAllElements();
 	}
-	//this->head = nullptr;
-	this->head = NULL;
+	this->head = nullptr;
+	//this->head = NULL;
 	this->tail = nullptr;
 }
 

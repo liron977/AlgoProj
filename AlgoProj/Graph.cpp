@@ -10,29 +10,12 @@ Graph::Graph(int n)
 	MakeEmptyGraph(n);
 }
 
-//copy ctor. 
-//Graph::Graph(const Graph& other)
-//{
-//	this->vertexNum = other.vertexNum;
-//
-//	adjMatrix = new int* [this->vertexNum];
-//	for (int i = 0; i < this->vertexNum; ++i)
-//		adjMatrix[i] = new int[this->vertexNum];
-//
-//	// Copy other's adjMatrix
-//	for (int i = 0; i < this->vertexNum; i++)
-//	{
-//		memcpy(adjMatrix[i], other.adjMatrix[i], sizeof(int) * this->vertexNum);
-//	}
-//}
-
 //dtor
 Graph::~Graph()
 {
-	
-	
+
 	delete[] adjList;
-	
+
 	adjList = NULL;
      
 	
@@ -47,10 +30,12 @@ void Graph::MakeEmptyGraph(int n)
 	//DeleteAdjMatrix();/TO DO
 
 	adjList = new LinkedList[n];
+
 	for (int i = 0; i < n; ++i)
 	{
 	 adjList[i].MakeEmpty(); //initialize all objects in matrix to zero 
 	}
+
 
 	vertexNum = n;
 }
@@ -149,53 +134,6 @@ void Graph::SetVertexNum(int newVertexNum)
 {
 	this->vertexNum = newVertexNum;
 }
-//operators overloading
-//bool Graph::operator==(const Graph& other) const
-//{
-//	if (this->vertexNum != other.vertexNum)
-//	{
-//		return false;
-//	}
-//
-//	for (int i = 0; i < this->vertexNum; i++)
-//	{
-//		for (int j = 0; j < this->vertexNum; j++)
-//		{
-//			if (this->adjMatrix[i][j] != other.adjMatrix[i][j])
-//			{
-//				return false;
-//			}
-//		}
-//	}
-//
-//	return true;
-//}
-//
-//bool Graph::operator!=(const Graph& other) const
-//{
-//	return !(*this == other);
-//}
-//
-//const Graph& Graph::operator=(const Graph& other)
-//{
-//	if (this != &other) // check self- assignment
-//	{
-//		//delete current adjMatrix 
-//		DeleteAdjMatrix();
-//
-//		this->vertexNum = other.vertexNum;
-//		adjMatrix = new int* [this->vertexNum];
-//		for (int i = 0; i < this->vertexNum; ++i)
-//			adjMatrix[i] = new int[this->vertexNum];
-//
-//		// Copy other's adjMatrix
-//		for (int i = 0; i < this->vertexNum; i++)
-//		{
-//			memcpy(adjMatrix[i], other.adjMatrix[i], sizeof(int) * this->vertexNum);
-//		}
-//	}
-//	return *this;
-//}
 bool Graph::isEmpty()
 {
 	if (vertexNum == 0)
@@ -218,7 +156,6 @@ void Graph::ReadGraph()
 	Utils utils;
 	u=utils.getInput();
 	v=utils.getInput();
-	//int countVertex = 0;
 	
 	while (!cin.eof())
 	{
@@ -268,7 +205,6 @@ void Graph::BFS(int** p, int** d, int sourceVertex)
 	while (!Q.IsEmpty())
 	{
 		u = Q.DeQueue();
-		//uAdjList = GetAdjList(u-1);
 		currListNode = (adjList[u - 1]).First();
 
 		while (currListNode != nullptr)

@@ -12,6 +12,8 @@ public:
 	void shortPathAlgorithm();
 	bool isValidInput(string input);
 	void getInput(int& n, int& t, int& s);
+	void executeShortPathAlgorithm();
+	//Graph algorithmFirstSteps(int& n, int& s, int& t, Graph& g2);
 
 private:
 
