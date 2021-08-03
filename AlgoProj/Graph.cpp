@@ -9,7 +9,7 @@ Graph::Graph(int n)
 	MakeEmptyGraph(n);
 }
 
-//copy ctor 
+//copy ctor. 
 //Graph::Graph(const Graph& other)
 //{
 //	this->vertexNum = other.vertexNum;
