@@ -86,7 +86,7 @@ void LinkedList::DeleteAllElements()
 }
 
 
-// print linked list's values
+// print linked list's values1
 void LinkedList::print(int key) const
 {
 	Node* currentNode = this->head;
