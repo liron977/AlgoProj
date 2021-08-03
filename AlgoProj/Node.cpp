@@ -13,7 +13,10 @@ Node::Node(int item, Node* ptr)
 }
 
 //default dtor
-Node::~Node() {}
+Node::~Node()
+{
+ //delete next;
+}
 
 // getters 
 int Node::GetData() const

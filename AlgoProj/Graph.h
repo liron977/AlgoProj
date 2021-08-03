@@ -29,7 +29,7 @@ public:
 
 	int AddEdge(int u, int v);
 	Node* RemoveEdge(int u, int v);
-	void ReadGraph(int n);
+	void ReadGraph();
 	void printGraph();
 	bool isEmpty();
 	void createTransposeGraph(Graph& newTransposeGraph);
@@ -37,14 +37,13 @@ public:
 	void removeEdgeOfNonConsecutiveNumbersVertex(int* d);
 
 	// geters  
-	int GetEdgeCapcity(int u, int v) const;
+	
 	LinkedList* GetAdjList() const;
 	int GetVertexNum() const;
 
 	//setters 
 	void SetAdjList(LinkedList* newAdjList);
 	void SetVertexNum(int newVertexNum);
-	void SetEdgeCapacity(int u, int v, int newCapacity);
 	void BFS(int** p, int** d, int sourceVertex);
 	void Algo(int source);
 

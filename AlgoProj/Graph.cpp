@@ -28,8 +28,11 @@ Graph::Graph(int n)
 //dtor
 Graph::~Graph()
 {
-	DeleteAdjList();
-//	delete[] adjList;
+	
+   // DeleteAdjList();
+	delete[] adjList;
+	
+	
 	
 }
 
@@ -107,9 +110,12 @@ void Graph::DeleteAdjList()
 	for (int i = 0; i < vertexNum; i++)
 	{
 		adjList[i].DeleteAllElements();
+		
+		
 	}
 	vertexNum = 0;
 	//adjList = nullptr;
+	//delete adjList;
 	
 }
 
@@ -197,75 +203,16 @@ void Graph::printGraph()
 		adjList[i].print(i + 1);
 	}
 }
-void Graph::ReadGraph(int n)
+void Graph::ReadGraph()
 {
-	int num1, num2;
-	string readFileName;
-	string currNum1, currNum2;
-	cin >> readFileName;
-	size_t idx = 0;
-
-
-	/*for (int i = 0; i < 28; i+=2)
+	int u, v;
+	cin >> u >> v;
+	while (!cin.eof())
 	{
-		cin >> num1;
-		cin >> num2;
-		AddEdge(num1, num2);
-
-	}*/
-	std::fstream myfile(readFileName, std::ios_base::in);
-
-	while (!myfile.eof())
-	{
-		myfile >> currNum1;
-		myfile >> currNum2;
-		num1=stoi(currNum1, &idx);
-		num2=stoi(currNum2, &idx);
-
-		AddEdge(num1,num2);
-		
+		AddEdge(u, v);
+		cin >> u >> v;
 	}
-
-	/*char str[256];
-	cin >> inputFileName;
-	size_t found = inputFileName.find(".txt");
-	if (found == string::npos)
-		inputFileName += ".txt";*/
-	//ifstream myReadFile(inputFileName, ios::in);
-	//std::fstream myReadFile(inputFileName, std::ios_base::in);
-	//if (!myReadFile.is_open()) {//If the file does not exist or any other reason why the file can not be opned 
-	//	cout<<"wrong";
-	//}
-	//int count = 0, j = 0, i = 0;
-	//int num;
-	//char curr_char,curr;
-	//int temp;
-	//	for (j = 0; j < n; j++)
-	//	{
-	//		myReadFile >> num;
-	//		myReadFile.get(curr_char);
-	//		if (myReadFile.eof())
-	//			int x = 1;
-	//		while (((curr_char != ' ') && (curr_char != '\n') && (!myReadFile.eof()))) //here we get each of the number characters
-	//		{
-
-	//			str[i] = curr_char;
-	//			myReadFile.get(curr_char);
-	//			i++;
-	//		}
-	//		str[i] = '\n';
-	//		if (str[0] == '\n')
-	//		{
-	//			continue;
-	//		}
-	//		num = int(atof(str)); //we got a valid number and change its type to int 
-	//		if (j % 2 == 0 && j != 0)
-	//		{
-	//			AddEdge(num, temp);
-	//		}
-	//		i = 0;
-	//		temp = num;
-	//}
+	
 }
 
 //find path from 'sourceVertex' vertex in given graph using BFS . return 2 output parameters :arrays p and d  .
@@ -335,24 +282,10 @@ void Graph::removeEdgeOfNonConsecutiveNumbersVertex(int* d)
 		}
 	}
 }
-void Graph::Algo(int source)
-{
-	// p represent the path from source discovered by BFS algorithm 
-// for vertex v the value p[v] is the parent of v in BFS tree , and -1 (NO_PARENT) if it doesn't has one .There is no vertex '0' therefor p[0] is non relevant (used for readability)
-	int* p = new int[vertexNum];
 
-	// for vertex v the value d[v] is the length of the shortest path from sourceVertex to v ,and infinity if there isn't such path .There is no vertex '0' therefor d[0] is non relevant (used for readability)
-	int* d = new int[vertexNum ];
-
-	BFS(&p, &d, source);
-	removeEdgeOfNonConsecutiveNumbersVertex(d);
-
-
-
-}
 void Graph::createTransposeGraph(Graph& newTransposeGraph)
 {
-	LinkedList* newTransposeAdjList = new LinkedList[vertexNum];
+	LinkedList* newTransposeAdjList =new LinkedList[vertexNum];
 	Node* currNode;
 	for (int i = 0; i < vertexNum; i++)
 	{
@@ -364,6 +297,7 @@ void Graph::createTransposeGraph(Graph& newTransposeGraph)
 		}
 	}
 	newTransposeGraph.SetAdjList(newTransposeAdjList);
+	//delete newTransposeAdjList;
 
 }
 void Graph::deleteUnaccessableEdgeFromSource(int* d)
@@ -380,8 +314,9 @@ void Graph::deleteUnaccessableEdgeFromSource(int* d)
 				}
 				
 			}
-			adjList[i].MakeEmpty();
-	
+			if (!adjList[i].IsEmpty()) {
+				adjList[i].MakeEmpty();
+			}
 		}
 	}
 }

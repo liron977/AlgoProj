@@ -15,7 +15,9 @@ LinkedList::LinkedList()
 // dtor 
 LinkedList::~LinkedList()
 {
-	DeleteAllElements();
+	MakeEmpty();
+	delete head;
+	delete tail;
 }
 
 // make empty linked list 
@@ -67,15 +69,22 @@ void LinkedList::InsertToEnd(int value)
 //delete all elements in linked list 
 void LinkedList::DeleteAllElements()
 {
+	/*if(!this->head)
+	{
+		return;
+	}*/
 	Node* currNode = this->head;
 	Node* nextNode;
+	
 	while (currNode)
 	{
 		nextNode = currNode->GetNext();
-		delete currNode;
-
+		//	nextNode = currNode->GetNext();
+			delete currNode;
 		currNode = nextNode;
 	}
+	
+	
 }
 
 // print linked list's values
