@@ -14,9 +14,6 @@ void Algorithm::shortPathAlgorithm()
 
 	Graph g(n);
 	g.ReadGraph();
-
-
-
 	g.BFS(&p, &d, s);
 	g.removeEdgeOfNonConsecutiveNumbersVertex(d);
 	
@@ -32,8 +29,8 @@ void Algorithm::shortPathAlgorithm()
 	gTranspose.createTransposeGraph(h);
 	h.printGraph();
 	//delete[] p;
-	//delete[] d;
-	////delete [] d;
+	////delete[] d;
+	//delete [] d;
 	//delete[] dTranspose;
 	//delete [] pTranspose;
 	

@@ -16,8 +16,6 @@ LinkedList::LinkedList()
 LinkedList::~LinkedList()
 {
 	MakeEmpty();
-	delete head;
-	delete tail;
 }
 
 // make empty linked list 
@@ -86,6 +84,7 @@ void LinkedList::DeleteAllElements()
 	
 	
 }
+
 
 // print linked list's values
 void LinkedList::print(int key) const

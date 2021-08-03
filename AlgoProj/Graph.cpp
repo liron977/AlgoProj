@@ -29,10 +29,10 @@ Graph::Graph(int n)
 Graph::~Graph()
 {
 	
-   // DeleteAdjList();
+	
 	delete[] adjList;
-	
-	
+	//delete adjList;
+     
 	
 }
 

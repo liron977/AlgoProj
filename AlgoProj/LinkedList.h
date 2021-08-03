@@ -22,6 +22,7 @@ public:
 	Node* deleteNode(int value);
 	void DeleteAllElements();
 	int getLength()const ;
+	
 
 private:
 	// members
