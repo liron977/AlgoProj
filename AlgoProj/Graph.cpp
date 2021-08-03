@@ -1,4 +1,5 @@
 #include "Graph.h"
+#include "Utils.h"
 #include <fstream>
 #include <cstring>
 #include <iostream>
@@ -31,7 +32,8 @@ Graph::~Graph()
 	
 	
 	delete[] adjList;
-	//delete adjList;
+	
+	adjList = NULL;
      
 	
 }
@@ -72,19 +74,26 @@ LinkedList* Graph::GetAdjList(int u) const
 		{
 			tempAdjList = new LinkedList(adjList[u]);
 			return tempAdjList;
-		}	
+		}
+	
 	return NULL;
 }
 
 //check if given integer is a vertex in current graph
 bool Graph::IsVertexInGraph(int u) const
 {
-	return (u >= 1 && u <= this->vertexNum);
+
+	if(u >= 1 && u <= this->vertexNum)
+	{
+		return true;
+	}
+	return false;
 }
 
 // add edge (u,v)  
 int Graph::AddEdge(int u, int v)
 {
+	Utils utils;
 	//TODO-Checks internal loops 
 	if (IsVertexInGraph(u))
 	{
@@ -206,18 +215,34 @@ void Graph::printGraph()
 void Graph::ReadGraph()
 {
 	int u, v;
-	cin >> u >> v;
+	Utils utils;
+	u=utils.getInput();
+	v=utils.getInput();
+	//int countVertex = 0;
+	
 	while (!cin.eof())
 	{
-		AddEdge(u, v);
-		cin >> u >> v;
+		if(!AddEdge(u, v))
+		{
+			utils.invalidInputMessage();
+		}
+		u = utils.getInput();
+		v = utils.getInput();
+		
+		if (v == -1 &&u!=-1)
+		{
+			utils.invalidInputMessage();
+		}
 	}
+	
+	
 	
 }
 
 //find path from 'sourceVertex' vertex in given graph using BFS . return 2 output parameters :arrays p and d  .
 // for vertex v the value p[v] is the parent of v in BFS tree , and -1 (NO_PARENT)if it doesn't has one . There is no vertex '0' therefor p[0] is non relevant (used for readability)
 // for vertex v the value d[v] is the length of the shortest path from sourceVertex to v ,and infinity if there isn't such path .There is no vertex '0' therefor d[0] is non relevant (used for readability)
+
 void Graph::BFS(int** p, int** d, int sourceVertex)
 {
 	Queue Q;
@@ -231,28 +256,28 @@ void Graph::BFS(int** p, int** d, int sourceVertex)
 	int* pArr = *p;
 	int* dArr = *d;
 
-	for (int i = 0; i <= vertexNum; i++) // run over all vertexs .( There is no vertex '0' used to readability)
+	for (int i = 0; i < vertexNum; i++) // run over all vertexs .( There is no vertex '0' used to readability)
 	{
 		dArr[i] = numeric_limits<int>::max();
 		pArr[i] = NO_PARENT;
 	}
 
 	Q.EnQueue(sourceVertex);
-	dArr[sourceVertex-1] = 0;
+	dArr[sourceVertex - 1] = 0;
 
 	while (!Q.IsEmpty())
 	{
 		u = Q.DeQueue();
 		//uAdjList = GetAdjList(u-1);
-		currListNode = (adjList[u-1]).First();
+		currListNode = (adjList[u - 1]).First();
 
 		while (currListNode != nullptr)
 		{
 			v = currListNode->GetData();
-			if (dArr[v-1] == numeric_limits<int>::max())
+			if (dArr[v - 1] == numeric_limits<int>::max())
 			{
-				dArr[v-1] = dArr[u-1] + 1;
-				pArr[v-1] = u;
+				dArr[v - 1] = dArr[u - 1] + 1;
+				pArr[v - 1] = u;
 				Q.EnQueue(v);
 			}
 			currListNode = currListNode->GetNext();
@@ -297,7 +322,7 @@ void Graph::createTransposeGraph(Graph& newTransposeGraph)
 		}
 	}
 	newTransposeGraph.SetAdjList(newTransposeAdjList);
-	//delete newTransposeAdjList;
+	//delete[] newTransposeAdjList;
 
 }
 void Graph::deleteUnaccessableEdgeFromSource(int* d)

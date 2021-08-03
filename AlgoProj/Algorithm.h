@@ -10,6 +10,8 @@ class Algorithm
 {
 public:
 	void shortPathAlgorithm();
+	bool isValidInput(string input);
+	void getInput(int& n, int& t, int& s);
 
 private:
 

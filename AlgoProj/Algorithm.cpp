@@ -1,11 +1,25 @@
 #include "Algorithm.h"
-
+#include "Utils.h"
 void Algorithm::shortPathAlgorithm()
 {
 	int n, s, t;
-	cin >> n;
-	cin >> s;
-	cin >> t;
+	Utils utils;
+	
+	n = utils.getInput();
+	if(n==-1)
+	{
+		utils.invalidInputMessage();
+	}
+	s = utils.getInput();
+	if (s == -1)
+	{
+		utils.invalidInputMessage();
+	}
+	t = utils.getInput();
+	if (t == -1)
+	{
+		utils.invalidInputMessage();
+	}
 	// for vertex v the value d[v] is the length of the shortest path from sourceVertex to v ,and infinity if there isn't such path
 	int *d = new int[n];
 	// p represent the path from source discovered by BFS algorithm 
@@ -13,6 +27,10 @@ void Algorithm::shortPathAlgorithm()
 	int* p = new int[n];
 
 	Graph g(n);
+	if(!g.IsVertexInGraph(s)|| !g.IsVertexInGraph(s))
+	{
+		utils.invalidInputMessage();
+	}
 	g.ReadGraph();
 	g.BFS(&p, &d, s);
 	g.removeEdgeOfNonConsecutiveNumbersVertex(d);
@@ -28,10 +46,11 @@ void Algorithm::shortPathAlgorithm()
 	Graph h(n);
 	gTranspose.createTransposeGraph(h);
 	h.printGraph();
-	//delete[] p;
-	////delete[] d;
+	delete[] p;
+	delete[] d;
 	//delete [] d;
-	//delete[] dTranspose;
-	//delete [] pTranspose;
+	delete[] dTranspose;
+	delete [] pTranspose;
 	
 }
+
