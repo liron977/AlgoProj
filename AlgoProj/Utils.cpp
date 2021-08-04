@@ -12,7 +12,7 @@ int Utils::getInput()
 
 		return stoi(userInput);
 	}
-	
+
 	return -1;
 }
 bool Utils::isValidInput(string input)
@@ -26,27 +26,30 @@ bool Utils::isValidInput(string input)
 	}
 	return true;
 }
-void Utils:: invalidInputMessage()
+void Utils::invalidInputMessage()
 {
 	cout << "Invalid input";
 	exit(1);
 }
-void Utils::getGraphData(int& vertexNum, int& source, int& destination)
-{
-	
-	vertexNum = getInput();
-	if (vertexNum == -1)
-	{
-		invalidInputMessage();
-	}
-	source =getInput();
-	if (source == -1)
-	{
-		invalidInputMessage();
-	}
-	destination =getInput();
-	if (destination == -1)
-	{
-	 invalidInputMessage();
-	}
-}
+//void Utils::getGraphData(int& vertexNum, int& source, int& destination)
+//{
+//	int n,s,t;
+//	n = getInput();
+//	if (vertexNum == -1)
+//	{
+//		invalidInputMessage();
+//	}
+//	s =getInput();
+//	if (source == -1)
+//	{
+//		invalidInputMessage();
+//	}
+//	t =getInput();
+//	if (destination == -1)
+//	{
+//	 invalidInputMessage();
+//	}
+//	vertexNum = n;
+//	source = s;
+//	destination = t;
+//}

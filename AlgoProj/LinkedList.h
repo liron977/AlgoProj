@@ -12,15 +12,15 @@ public:
 	LinkedList(const Node& other);
 	~LinkedList();
 
-	void MakeEmpty();
-	bool IsEmpty() const;
-	Node* First() const;
-	Node* Last() const;
+	void makeEmpty();
+	bool isEmpty() const;
+	Node* getHead() const;
+	Node* getTail() const;
 	void print(int key) const;
 	bool isExist(int value) const;
-	void InsertToEnd(int value);
+	void insertToEnd(int value);
 	Node* deleteNode(int value);
-	void DeleteAllElements();
+	void deleteAllElements();
 	int getLength()const ;
 	
 
@@ -29,7 +29,6 @@ private:
 	Node* head = nullptr;
 	Node* tail;
 
-	//private functions
 
 };
 

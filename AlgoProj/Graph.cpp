@@ -16,7 +16,7 @@ Graph::~Graph()
 
 	delete[] adjList;
 
-	adjList = NULL;
+	//adjList = NULL;
      
 	
 }
@@ -33,7 +33,7 @@ void Graph::MakeEmptyGraph(int n)
 
 	for (int i = 0; i < n; ++i)
 	{
-	 adjList[i].MakeEmpty(); //initialize all objects in matrix to zero 
+	 adjList[i].makeEmpty(); //initialize all objects in matrix to zero 
 	}
 
 
@@ -84,7 +84,7 @@ int Graph::AddEdge(int u, int v)
 	{
 		if (!adjList[u-1].isExist(v))
 		{
-			adjList[u-1].InsertToEnd(v);
+			adjList[u-1].insertToEnd(v);
 			return 1;
 		}
 	}
@@ -103,7 +103,7 @@ void Graph::DeleteAdjList()
 {
 	for (int i = 0; i < vertexNum; i++)
 	{
-		adjList[i].DeleteAllElements();
+		adjList[i].deleteAllElements();
 		
 		
 	}
@@ -186,7 +186,6 @@ void Graph::BFS(int** p, int** d, int sourceVertex)
 	int u, v;
 	LinkedList* uAdjList;
 	Node* currListNode;
-	//int vertexNum = graph.GetVertexNum();
 
 	//// for vertex v the value pArr[v] is the parent of v in BFS tree , and -1 (NO_PARENT)if it doesn't has one . There is no vertex '0' therefor pArr[0] is non relevant (used for readability)
 	//// for vertex v the value dArr[v] is the length of the shortest path from sourceVertex to v ,and infinity if there isn't such path .There is no vertex '0' therefor dArr[0] is non relevant (used for readability)
@@ -199,24 +198,24 @@ void Graph::BFS(int** p, int** d, int sourceVertex)
 		pArr[i] = NO_PARENT;
 	}
 
-	Q.EnQueue(sourceVertex);
+	Q.enQueue(sourceVertex);
 	dArr[sourceVertex - 1] = 0;
 
-	while (!Q.IsEmpty())
+	while (!Q.isEmpty())
 	{
-		u = Q.DeQueue();
-		currListNode = (adjList[u - 1]).First();
+		u = Q.deQueue();
+		currListNode = (adjList[u - 1]).getHead();
 
 		while (currListNode != nullptr)
 		{
-			v = currListNode->GetData();
+			v = currListNode->getData();
 			if (dArr[v - 1] == numeric_limits<int>::max())
 			{
 				dArr[v - 1] = dArr[u - 1] + 1;
 				pArr[v - 1] = u;
-				Q.EnQueue(v);
+				Q.enQueue(v);
 			}
-			currListNode = currListNode->GetNext();
+			currListNode = currListNode->getNext();
 		}
 
 		//delete uAdjList;
@@ -227,17 +226,17 @@ void Graph::removeEdgeOfNonConsecutiveNumbersVertex(int* d)
 	Node* currNode;
 	for (int i = 0; i < vertexNum; i++)
 	{
-		currNode = adjList[i].First();
+		currNode = adjList[i].getHead();
 		while (currNode!=NULL)
 		{
-			if (d[currNode->GetData()-1] != d[i] + 1)
+			if (d[currNode->getData()-1] != d[i] + 1)
 			{
-				currNode=RemoveEdge(i, currNode->GetData());
+				currNode=RemoveEdge(i, currNode->getData());
 
 			}
 			else
 			{
-				currNode = currNode->GetNext();
+				currNode = currNode->getNext();
 			}
 				
 		}
@@ -250,11 +249,11 @@ void Graph::createTransposeGraph(Graph& newTransposeGraph)
 	Node* currNode;
 	for (int i = 0; i < vertexNum; i++)
 	{
-		currNode = adjList[i].First();
+		currNode = adjList[i].getHead();
 		while (currNode!=NULL)
 		{
-			newTransposeAdjList[currNode->GetData() - 1].InsertToEnd(i + 1);
-			currNode = currNode->GetNext();
+			newTransposeAdjList[currNode->getData() - 1].insertToEnd(i + 1);
+			currNode = currNode->getNext();
 		}
 	}
 	newTransposeGraph.SetAdjList(newTransposeAdjList);
@@ -269,14 +268,14 @@ void Graph::deleteUnaccessableEdgeFromSource(int* d)
 		{
 			for (int j = 0; j < vertexNum; j++)
 			{
-				if (!adjList[j].IsEmpty())
+				if (!adjList[j].isEmpty())
 				{
 					adjList[j].deleteNode(i + 1);
 				}
 				
 			}
-			if (!adjList[i].IsEmpty()) {
-				adjList[i].MakeEmpty();
+			if (!adjList[i].isEmpty()) {
+				adjList[i].makeEmpty();
 			}
 		}
 	}

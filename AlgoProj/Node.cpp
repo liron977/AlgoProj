@@ -19,12 +19,12 @@ Node::~Node()
 }
 
 // getters 
-int Node::GetData() const
+int Node::getData() const
 {
 	return this->data;
 }
 
-Node* Node::GetNext() const
+Node* Node::getNext() const
 {
 	return this->next;
 }
@@ -41,14 +41,14 @@ void Node::setNext(Node* next)
 }
 
 //Insert newNode after current node.
-void Node::InsertAfter(Node* newNode)
+void Node::insertAfter(Node* newNode)
 {
 	newNode->next = next;
 	next = newNode;
 }
 
 //delete node after current node(and return node to delete) 
-Node* Node::DeleteAfter()
+Node* Node::deleteAfter()
 {
 	Node* temp = next;
 	if (next == nullptr)

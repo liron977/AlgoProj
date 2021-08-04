@@ -3,7 +3,7 @@
 //ctor - uses dummy node as first element 
 Queue::Queue()
 {
-	MakeEmpty();
+	makeEmpty();
 }
 
 //dtor- free memory 
@@ -16,7 +16,7 @@ Queue::~Queue()
 
 	while (currNode)
 	{
-		nextNode = currNode->GetNext();
+		nextNode = currNode->getNext();
 		delete currNode;
 
 		currNode = nextNode;
@@ -24,7 +24,7 @@ Queue::~Queue()
 }
 
 // empty queue 
-void Queue::MakeEmpty()
+void Queue::makeEmpty()
 {
 	Node* currNode;
 	Node* nextNode;
@@ -32,10 +32,10 @@ void Queue::MakeEmpty()
 	if (head != nullptr)
 	{
 		//empty current queue and free memory , and keeep only dummy head 	
-		currNode = this->head->GetNext();
+		currNode = this->head->getNext();
 		while (currNode)
 		{
-			nextNode = currNode->GetNext();
+			nextNode = currNode->getNext();
 			delete currNode;
 
 			currNode = nextNode;
@@ -49,30 +49,30 @@ void Queue::MakeEmpty()
 }
 
 // check if queue is empty 
-bool Queue::IsEmpty() const
+bool Queue::isEmpty() const
 {
 	return (head == tail);
 }
 
 // insert item to queue
-void Queue::EnQueue(int item)
+void Queue::enQueue(int item)
 {
 	Node* newNode = new Node(item);
-	tail->InsertAfter(newNode);
+	tail->insertAfter(newNode);
 	tail = newNode;
 }
 
 // remove first item in queue 
-int Queue::DeQueue()
+int Queue::deQueue()
 {
-	if (IsEmpty())
+	if (isEmpty())
 	{
 		cout << "Error! empty queue" << endl;
 		exit(1);
 	}
 
-	Node* temp = head->DeleteAfter();
-	int item = temp->GetData();
+	Node* temp = head->deleteAfter();
+	int item = temp->getData();
 	if (tail == temp)
 	{
 		tail = head;

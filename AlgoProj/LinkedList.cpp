@@ -7,7 +7,7 @@ using namespace std;
 //ctor 
 LinkedList::LinkedList()
 {
-	MakeEmpty();
+	makeEmpty();
 }
 
 
@@ -15,15 +15,15 @@ LinkedList::LinkedList()
 // dtor 
 LinkedList::~LinkedList()
 {
-	MakeEmpty();
+	makeEmpty();
 }
 
 // make empty linked list 
-void LinkedList::MakeEmpty()
+void LinkedList::makeEmpty()
 {
 	if (head != nullptr)
 	{
-		DeleteAllElements();
+		deleteAllElements();
 	}
 	this->head = nullptr;
 	//this->head = NULL;
@@ -31,29 +31,29 @@ void LinkedList::MakeEmpty()
 }
 
 // check if linked list is empty 
-bool LinkedList::IsEmpty() const
+bool LinkedList::isEmpty() const
 {
 	return (this->head == nullptr);
 }
 
 // return first element in linked list
-Node* LinkedList::First() const
+Node* LinkedList::getHead() const
 {
 	return this->head;
 }
 
 // return last element in linked list 
-Node* LinkedList::Last() const
+Node* LinkedList::getTail() const
 {
 	return this->tail;
 }
 
 //insert new node with the value  'value' to the end of the linked list
-void LinkedList::InsertToEnd(int value)
+void LinkedList::insertToEnd(int value)
 {
 	Node* temp = new Node(value);
 
-	if (IsEmpty())
+	if (isEmpty())
 	{
 		this->head = temp;
 	}
@@ -65,7 +65,7 @@ void LinkedList::InsertToEnd(int value)
 }
 
 //delete all elements in linked list 
-void LinkedList::DeleteAllElements()
+void LinkedList::deleteAllElements()
 {
 	/*if(!this->head)
 	{
@@ -76,7 +76,7 @@ void LinkedList::DeleteAllElements()
 	
 	while (currNode)
 	{
-		nextNode = currNode->GetNext();
+		nextNode = currNode->getNext();
 		//	nextNode = currNode->GetNext();
 			delete currNode;
 		currNode = nextNode;
@@ -95,9 +95,9 @@ void LinkedList::print(int key) const
 		//cout << "     ";
 		cout << key;
 		cout << " ";
-		cout << currentNode->GetData() << endl;
+		cout << currentNode->getData() << endl;
 
-		currentNode = currentNode->GetNext();
+		currentNode = currentNode->getNext();
 
 	}
 }
@@ -106,11 +106,11 @@ bool LinkedList::isExist(int value) const
 	Node* currentNode = this->head;
 	while (currentNode!=NULL)
 	{
-		if (currentNode->GetData() == value)
+		if (currentNode->getData() == value)
 		{
 			return true;
 		}
-		currentNode = currentNode->GetNext();
+		currentNode = currentNode->getNext();
 		
 	}
 	return false;
@@ -122,10 +122,10 @@ Node* LinkedList::deleteNode(int value)
 	Node* prev = NULL;
 	// If head node itself holds
 	// the value to be deleted
-	if (currentNode != NULL&&currentNode->GetData() == value)
+	if (currentNode != NULL&&currentNode->getData() == value)
 	{
-		this->head=head->GetNext();
-		if (temp->GetNext()== NULL)
+		this->head=head->getNext();
+		if (temp->getNext()== NULL)
 		{
 			this->tail = NULL;
 		}
@@ -138,10 +138,10 @@ Node* LinkedList::deleteNode(int value)
 	// need to change 'prev->next' */
 	else
 	{
-		while (temp != NULL && temp->GetData() != value)
+		while (temp != NULL && temp->getData() != value)
 		{
 			prev = temp;
-			temp=temp->GetNext();
+			temp=temp->getNext();
 		}
 
 		// If key was not present in linked list
@@ -149,8 +149,8 @@ Node* LinkedList::deleteNode(int value)
 			return NULL;
 
 		// Unlink the node from linked list
-		prev->setNext(temp->GetNext());
-		if (temp->GetNext() == NULL)
+		prev->setNext(temp->getNext());
+		if (temp->getNext() == NULL)
 		{
 			this->tail = NULL;
 			
@@ -169,7 +169,7 @@ int LinkedList::getLength()const
 	while (currentNode)
 	{
 		count++;
-		currentNode = currentNode->GetNext();
+		currentNode = currentNode->getNext();
 	}
 	return count;
 }

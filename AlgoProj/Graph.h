@@ -19,7 +19,6 @@ class Graph
 public:
 	//object functions
 	Graph(int n);
-	//Graph(const Graph& other);
 	~Graph();
 
 	void MakeEmptyGraph(int n);
@@ -47,13 +46,6 @@ public:
 	void SetVertexNum(int newVertexNum);
 	void BFS(int** p, int** d, int sourceVertex);
 	void Algo(int source);
-
-
-
-	//operators overloading 
-	/*bool operator ==(const Graph& other) const;
-	bool operator !=(const Graph& other) const;
-	const Graph& operator= (const Graph& other);*/
 
 
 private:

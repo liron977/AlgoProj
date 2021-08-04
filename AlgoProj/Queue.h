@@ -15,10 +15,10 @@ public:
 	//object functions
 	Queue();
 	~Queue();
-	void MakeEmpty();
-	bool IsEmpty() const;
-	void EnQueue(int item);
-	int DeQueue();
+	void makeEmpty();
+	bool isEmpty() const;
+	void enQueue(int item);
+	int deQueue();
 
 private:
 	// members

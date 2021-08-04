@@ -12,15 +12,15 @@ public:
 	~Node();
 
 	//getters
-	int GetData() const;
-	Node* GetNext() const;
+	int getData() const;
+	Node* getNext() const;
 
 	//setters
 	void setData(int newData);
 	void setNext(Node* next);
 
-	void InsertAfter(Node* newNode);
-	Node* DeleteAfter();
+	void insertAfter(Node* newNode);
+	Node* deleteAfter();
 
 
 private:

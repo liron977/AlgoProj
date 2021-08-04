@@ -4,8 +4,22 @@ void Algorithm::shortPathAlgorithm()
 {
 	int n, s, t;
 	Utils utils;
-	
-	utils.getGraphData(n, s, t);
+	n = utils.getInput();
+	if (n == -1)
+	{
+		utils.invalidInputMessage();
+	}
+	s = utils.getInput();
+	if (s == -1)
+	{
+		utils.invalidInputMessage();
+	}
+	t = utils.getInput();
+	if (t == -1)
+	{
+		utils.invalidInputMessage();
+	}
+	//utils.getGraphData(n, s, t);
 
 	// for vertex v the value d[v] is the length of the shortest path from sourceVertex to v ,and infinity if there isn't such path
 	int *d = new int[n];
