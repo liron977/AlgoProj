@@ -7,7 +7,8 @@ using namespace std;
 //ctor 
 LinkedList::LinkedList()
 {
-	makeEmpty();
+	this->head = nullptr;
+	this->tail = nullptr;
 }
 
 
@@ -17,7 +18,7 @@ LinkedList::~LinkedList()
 {
 	makeEmpty();
 }
-
+//
 // make empty linked list 
 void LinkedList::makeEmpty()
 {
@@ -67,22 +68,16 @@ void LinkedList::insertToEnd(int value)
 //delete all elements in linked list 
 void LinkedList::deleteAllElements()
 {
-	/*if(!this->head)
-	{
-		return;
-	}*/
 	Node* currNode = this->head;
 	Node* nextNode;
 	
 	while (currNode)
 	{
 		nextNode = currNode->getNext();
-		//	nextNode = currNode->GetNext();
 			delete currNode;
 		currNode = nextNode;
 	}
-	
-	
+		
 }
 
 
@@ -92,9 +87,9 @@ void LinkedList::print(int key) const
 	Node* currentNode = this->head;
 	while (currentNode)
 	{
-		//cout << "     ";
+		cout << "     ";
 		cout << key;
-		cout << " ";
+		cout << "     ";
 		cout << currentNode->getData() << endl;
 
 		currentNode = currentNode->getNext();

@@ -31,7 +31,7 @@ void Queue::makeEmpty()
 
 	if (head != nullptr)
 	{
-		//empty current queue and free memory , and keeep only dummy head 	
+		//empty current queue and free memory , and keep only dummy head 	
 		currNode = this->head->getNext();
 		while (currNode)
 		{

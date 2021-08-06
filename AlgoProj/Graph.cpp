@@ -79,7 +79,6 @@ bool Graph::IsVertexInGraph(int u) const
 int Graph::AddEdge(int u, int v)
 {
 	Utils utils;
-	//TODO-Checks internal loops 
 	if (IsVertexInGraph(u))
 	{
 		if (!adjList[u-1].isExist(v))
@@ -108,8 +107,6 @@ void Graph::DeleteAdjList()
 		
 	}
 	vertexNum = 0;
-	//adjList = nullptr;
-	//delete adjList;
 	
 }
 
@@ -218,7 +215,6 @@ void Graph::BFS(int** p, int** d, int sourceVertex)
 			currListNode = currListNode->getNext();
 		}
 
-		//delete uAdjList;
 	}
 }
 void Graph::removeEdgeOfNonConsecutiveNumbersVertex(int* d)
@@ -257,7 +253,6 @@ void Graph::createTransposeGraph(Graph& newTransposeGraph)
 		}
 	}
 	newTransposeGraph.SetAdjList(newTransposeAdjList);
-	//delete[] newTransposeAdjList;
 
 }
 void Graph::deleteUnaccessableEdgeFromSource(int* d)
@@ -270,13 +265,15 @@ void Graph::deleteUnaccessableEdgeFromSource(int* d)
 			{
 				if (!adjList[j].isEmpty())
 				{
-					adjList[j].deleteNode(i + 1);
+					RemoveEdge(j,i + 1);
 				}
 				
 			}
 			if (!adjList[i].isEmpty()) {
 				adjList[i].makeEmpty();
 			}
+
+			
 		}
 	}
 }
