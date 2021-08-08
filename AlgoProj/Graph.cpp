@@ -21,8 +21,7 @@ Graph::~Graph()
 	
 }
 
-// make empty graph with n vertexs and no edges using adjacency matrix and initialize all valaues to zero .
-//adjMatrix[u-1][v-1] is capacity of the edge (u,v)
+
 void Graph::MakeEmptyGraph(int n)
 {
 	// delete old adjMatrix 
@@ -40,7 +39,7 @@ void Graph::MakeEmptyGraph(int n)
 	vertexNum = n;
 }
 
-// check if the edge (u,v) belong to the current graph . (assuming there are vertexs u and v in current graph)
+
 bool Graph::IsAdjacent(int u, int v) const
 {
 	
@@ -51,7 +50,6 @@ bool Graph::IsAdjacent(int u, int v) const
 	return false;
 }
 
-// return pointer to linked list of the neighbours of vertex u 
 LinkedList* Graph::GetAdjList(int u) const
 {	
 	LinkedList* tempAdjList;
@@ -64,7 +62,7 @@ LinkedList* Graph::GetAdjList(int u) const
 	return NULL;
 }
 
-//check if given integer is a vertex in current graph
+
 bool Graph::IsVertexInGraph(int u) const
 {
 
@@ -75,7 +73,7 @@ bool Graph::IsVertexInGraph(int u) const
 	return false;
 }
 
-// add edge (u,v)  
+
 int Graph::AddEdge(int u, int v)
 {
 	Utils utils;
@@ -90,7 +88,7 @@ int Graph::AddEdge(int u, int v)
 	return 0;
 }
 
-// remove edge (u,v) .(assuming there are vertexs u and v in current graph)
+
 Node* Graph::RemoveEdge(int u, int v)
 {
 	return (adjList[u].deleteNode(v));
@@ -110,7 +108,6 @@ void Graph::DeleteAdjList()
 	
 }
 
-//getters
 LinkedList* Graph::GetAdjList() const
 {
 	return adjList;
@@ -121,16 +118,11 @@ int Graph::GetVertexNum() const
 	return vertexNum;
 }
 
-//setters
 void Graph::SetAdjList(LinkedList* newAdjList)
 {
 	this->adjList = newAdjList;
 }
 
-void Graph::SetVertexNum(int newVertexNum)
-{
-	this->vertexNum = newVertexNum;
-}
 bool Graph::isEmpty()
 {
 	if (vertexNum == 0)
@@ -173,9 +165,6 @@ void Graph::ReadGraph()
 	
 }
 
-//find path from 'sourceVertex' vertex in given graph using BFS . return 2 output parameters :arrays p and d  .
-// for vertex v the value p[v] is the parent of v in BFS tree , and -1 (NO_PARENT)if it doesn't has one . There is no vertex '0' therefor p[0] is non relevant (used for readability)
-// for vertex v the value d[v] is the length of the shortest path from sourceVertex to v ,and infinity if there isn't such path .There is no vertex '0' therefor d[0] is non relevant (used for readability)
 
 void Graph::BFS(int** p, int** d, int sourceVertex)
 {

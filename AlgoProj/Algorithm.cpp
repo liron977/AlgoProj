@@ -49,9 +49,10 @@ void Algorithm::executeShortPathAlgorithm() {
 	double time_taken =
 		chrono::duration_cast<chrono::nanoseconds>(end - start).count();
 	time_taken *= 1e-9;
-	ofstream myfile("Measure.txt"); // The name of the file
-	myfile << "Time taken by function shortPathAlgorithm is : " << fixed
-		<< time_taken << setprecision(9);
-	myfile << " sec" << endl;
-	myfile.close();
+	cout<<"Time taken by function shortPathAlgorithm is : "<< fixed <<time_taken << setprecision(9)<< " sec"<< endl;
+	//ofstream myfile("Measure.txt"); // The name of the file
+	//myfile << "Time taken by function shortPathAlgorithm is : " << fixed
+	//	<< time_taken << setprecision(9);
+	//myfile << " sec" << endl;
+	//myfile.close();
 }

@@ -7,9 +7,6 @@ using namespace std;
 
 int main()
 {
-	int y = 5;
 	Algorithm algo;
-	algo.executeShortPathAlgorithm();
-	return 0;
-	
+	algo.executeShortPathAlgorithm();	
 }

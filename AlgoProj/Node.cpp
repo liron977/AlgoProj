@@ -12,7 +12,7 @@ Node::Node(int item, Node* ptr)
 	setNext(ptr);
 }
 
-//default dtor
+
 Node::~Node()
 {
  //delete next;
@@ -40,14 +40,13 @@ void Node::setNext(Node* next)
 	this->next = next;
 }
 
-//Insert newNode after current node.
 void Node::insertAfter(Node* newNode)
 {
 	newNode->next = next;
 	next = newNode;
 }
 
-//delete node after current node(and return node to delete) 
+
 Node* Node::deleteAfter()
 {
 	Node* temp = next;

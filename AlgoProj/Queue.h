@@ -12,12 +12,17 @@ using namespace std;
 class Queue
 {
 public:
-	//object functions
+	//ctor - uses dummy node as first element 
 	Queue();
+	//dtor- free memory 
 	~Queue();
+	// empty queue 
 	void makeEmpty();
+	// check if queue is empty 
 	bool isEmpty() const;
+	// insert item to queue
 	void enQueue(int item);
+
 	int deQueue();
 
 private:

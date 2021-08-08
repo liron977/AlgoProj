@@ -4,22 +4,16 @@
 #include <stdlib.h>
 using namespace std;
 
-//ctor 
+
 LinkedList::LinkedList()
 {
 	this->head = nullptr;
 	this->tail = nullptr;
 }
-
-
-
-// dtor 
 LinkedList::~LinkedList()
 {
 	makeEmpty();
 }
-//
-// make empty linked list 
 void LinkedList::makeEmpty()
 {
 	if (head != nullptr)
@@ -31,25 +25,24 @@ void LinkedList::makeEmpty()
 	this->tail = nullptr;
 }
 
-// check if linked list is empty 
 bool LinkedList::isEmpty() const
 {
 	return (this->head == nullptr);
 }
 
-// return first element in linked list
+
 Node* LinkedList::getHead() const
 {
 	return this->head;
 }
 
-// return last element in linked list 
+
 Node* LinkedList::getTail() const
 {
 	return this->tail;
 }
 
-//insert new node with the value  'value' to the end of the linked list
+
 void LinkedList::insertToEnd(int value)
 {
 	Node* temp = new Node(value);
@@ -65,7 +58,7 @@ void LinkedList::insertToEnd(int value)
 	tail = temp;
 }
 
-//delete all elements in linked list 
+
 void LinkedList::deleteAllElements()
 {
 	Node* currNode = this->head;
@@ -81,7 +74,7 @@ void LinkedList::deleteAllElements()
 }
 
 
-// print linked list's values1
+
 void LinkedList::print(int key) const
 {
 	Node* currentNode = this->head;
@@ -157,14 +150,14 @@ Node* LinkedList::deleteNode(int value)
 	}
 
 }
-int LinkedList::getLength()const
-{
-	int count = 0;
-	Node* currentNode = this->head;
-	while (currentNode)
-	{
-		count++;
-		currentNode = currentNode->getNext();
-	}
-	return count;
-}
+//int LinkedList::getLength()const
+//{
+//	int count = 0;
+//	Node* currentNode = this->head;
+//	while (currentNode)
+//	{
+//		count++;
+//		currentNode = currentNode->getNext();
+//	}
+//	return count;
+//}
