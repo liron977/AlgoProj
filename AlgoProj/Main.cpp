@@ -14,6 +14,16 @@ using namespace std;
 //in order to activate the program you need to insert the number of vertices,source vertex ,target vertex
 //and edges,press control 'Z' to start the process(short path from a single vertex to a target vertex)
 
+
+//The class are :
+//	Algorithm
+//	Graph
+//	LinkedList
+//	Main
+//	Node
+//	Queue
+//	Utils
+//	you can see the role of each class in the header file
 int main()
 {
 	Algorithm algo;
