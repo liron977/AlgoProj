@@ -19,7 +19,7 @@ bool Utils::isValidInput(string input)
 {
 	for (int i = 0; i < input.length(); i++)
 	{
-		if (input[i] < '0' || input[i]>'9')
+		if (input[i] < '0' || input[i]>'9')//vetify if the char is a number
 		{
 			return false;
 		}

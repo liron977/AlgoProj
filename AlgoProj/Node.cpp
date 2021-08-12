@@ -12,7 +12,6 @@ Node::Node(int item, Node* ptr)
 	setNext(ptr);
 }
 
-// getters 
 int Node::getData() const
 {
 	return this->data;
@@ -23,7 +22,6 @@ Node* Node::getNext() const
 	return this->next;
 }
 
-// setters
 void Node::setData(int newData)
 {
 	this->data = newData;
