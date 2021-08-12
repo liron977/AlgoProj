@@ -47,8 +47,8 @@ public:
 	//The function print the graph
 	void printGraph();
 
-	//The function verify if the number of vertexs in graph is zero,if we don`t have vertex in the current graph the function will return true,otherwise false  
-	bool isEmpty();
+	//The function verify if the number of vertexs in graph is zero,if we don`t have vertex in the current graph the function will return 1,otherwise 0  
+	int isEmpty();
 
 	//The function create the transpose graph(if in G we have the edge(u,v) in g transpose we will have instead the edge (v,u)
 	//The function recives an object in oreder to save the transpose graph 

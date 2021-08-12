@@ -115,7 +115,7 @@ void Graph::SetAdjList(LinkedList* newAdjList)
 	this->adjList = newAdjList;
 }
 
-bool Graph::isEmpty()
+int Graph::isEmpty()
 {
 	if (vertexNum == 0)
 	{
