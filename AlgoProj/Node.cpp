@@ -12,12 +12,6 @@ Node::Node(int item, Node* ptr)
 	setNext(ptr);
 }
 
-
-Node::~Node()
-{
- 
-}
-
 // getters 
 int Node::getData() const
 {

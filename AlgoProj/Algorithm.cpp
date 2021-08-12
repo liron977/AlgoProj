@@ -7,13 +7,13 @@ void Algorithm::shortPathAlgorithm()
 
 	utils.getGraphData(n, s, t);
 
-	// for vertex v the value d[v] is the length of the shortest path from sourceVertex to v ,and infinity if there isn't such path
+	// for vertex v the value d[v] is the length of the shortest path from the source vertex to v ,and infinity if there isn't such path
 	int *d = new int[n];
 	// p represent the path from source discovered by BFS algorithm 
 	// for vertex v the value p[v] is the parent of v in BFS tree , and -1 (NO_PARENT) if it doesn't has one
 	int* p = new int[n];
 
-	Graph g(n);
+	Graph g(n);//Create graph
 	if(!g.IsVertexInGraph(s)|| !g.IsVertexInGraph(t))
 	{
 		utils.invalidInputMessage();

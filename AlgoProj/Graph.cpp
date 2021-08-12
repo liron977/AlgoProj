@@ -21,8 +21,7 @@ Graph::~Graph()
 
 void Graph::MakeEmptyGraph(int n)
 {
-	// delete old adjMatrix 
-
+	
 	adjList = new LinkedList[n];
 
 	for (int i = 0; i < n; ++i)
@@ -89,8 +88,6 @@ Node* Graph::RemoveEdge(int u, int v)
 	return (adjList[u].deleteNode(v));
 }
 
-
-// delete allocated memory of adjacency list 
 void Graph::DeleteAdjList()
 {
 	for (int i = 0; i < vertexNum; i++)
@@ -126,6 +123,7 @@ bool Graph::isEmpty()
 	}
 	return 0;
 }
+
 void Graph::printGraph()
 {
 	cout << endl;
@@ -134,6 +132,7 @@ void Graph::printGraph()
 		adjList[i].print(i + 1);
 	}
 }
+
 void Graph::ReadGraph()
 {
 	int u, v;
@@ -150,7 +149,7 @@ void Graph::ReadGraph()
 		u = utils.getInput();
 		v = utils.getInput();
 		
-		if (v == -1 &&u!=-1)
+		if (v == -1 &&u!=-1)//if the vertexs input isn`t even 
 		{
 			utils.invalidInputMessage();
 		}
@@ -160,7 +159,6 @@ void Graph::ReadGraph()
 	
 }
 
-
 void Graph::BFS(int** p, int** d, int sourceVertex)
 {
 	Queue Q;
@@ -168,12 +166,12 @@ void Graph::BFS(int** p, int** d, int sourceVertex)
 	LinkedList* uAdjList;
 	Node* currListNode;
 
-	//// for vertex v the value pArr[v] is the parent of v in BFS tree , and -1 (NO_PARENT)if it doesn't has one . There is no vertex '0' therefor pArr[0] is non relevant (used for readability)
-	//// for vertex v the value dArr[v] is the length of the shortest path from sourceVertex to v ,and infinity if there isn't such path .There is no vertex '0' therefor dArr[0] is non relevant (used for readability)
+	//// for vertex v the value pArr[v] is the parent of v in BFS tree , and -1 (NO_PARENT)if it doesn't has one 
+	//// for vertex v the value dArr[v] is the length of the shortest path from the source vertex to v ,and infinity if there isn't such path
 	int* pArr = *p;
 	int* dArr = *d;
 
-	for (int i = 0; i < vertexNum; i++) // run over all vertexs .( There is no vertex '0' used to readability)
+	for (int i = 0; i < vertexNum; i++) //initialize the arrays
 	{
 		dArr[i] = numeric_limits<int>::max();
 		pArr[i] = NO_PARENT;
@@ -258,8 +256,7 @@ void Graph::deleteInaccessibleEdgeFromSource(int* d)
 			if (!adjList[i].isEmpty()) {
 				adjList[i].makeEmpty();
 			}
-
-			
+		
 		}
 	}
 }

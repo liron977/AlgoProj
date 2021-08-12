@@ -8,21 +8,26 @@ using namespace std;
 #include "Node.h"
 
 
-// queue class using linked list 
+//This fille represents the queue for using for the BFS
 class Queue
 {
 public:
 	//ctor - uses dummy node as first element 
 	Queue();
+
 	//dtor- free memory 
 	~Queue();
+
 	// empty queue 
 	void makeEmpty();
-	// check if queue is empty 
+
+	//check if queue is empty ,if the queue is empty the function reeturns true,otherwise-false
 	bool isEmpty() const;
+
 	// insert item to queue
 	void enQueue(int item);
-	//Pull item from the queue
+
+	//Pull item from the queue and returns it
 	int deQueue();
 
 private:

@@ -122,9 +122,6 @@ Node* LinkedList::deleteNode(int value)
 		return this->head;
 		
 	}
-	// Else Search for the key to be deleted,
-	// keep track of the previous node as we
-	// need to change 'prev->next' */
 	else
 	{
 		while (temp != NULL && temp->getData() != value)

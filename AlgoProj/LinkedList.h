@@ -2,6 +2,10 @@
 #define _LIST_H
 #include "Node.h"
 
+
+
+//This fille implementaion a linkedlist that we use for the list of neighborhoods
+
 class LinkedList
 {
 
@@ -9,29 +13,36 @@ public:
 
 	//ctor 
 	LinkedList();
-	// dtor 
+
+	//dtor 
 	~LinkedList();
-	// make empty linked list 
+
+	//make empty linked list 
 	void makeEmpty();
-	//check if linked list is empty 
+
+	//check if linked list is empty,if the list is empty the function will return true,otherwise false 
 	bool isEmpty() const;
-	// return first element in linked list
+
+	//return first element in linked list
 	Node* getHead() const;
-	// return last element in linked list 
+
+	//return last element in linked list 
 	Node* getTail() const;
-	// print linked list's values1
+
+	//print linked list's values
 	void print(int key) const;
-	//the function gets a value and return yes if the value exist in the list,else return no
+
+	//the function gets a value and return true if the value exist in the list,else return false
 	bool isExist(int value) const;
-	//insert new node with the value  'value' to the end of the linked list
+
+	//insert new node with the value 'value' to the end of the linked list
 	void insertToEnd(int value);
+
 	//delete the value from the list
 	Node* deleteNode(int value);
-	//delete all elements in linked list 
-	void deleteAllElements();
 
-	//int getLength()const ;
-	
+	//delete all elements in linked list 
+	void deleteAllElements();	
 
 private:
 
