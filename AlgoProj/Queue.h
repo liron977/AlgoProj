@@ -22,7 +22,7 @@ public:
 	bool isEmpty() const;
 	// insert item to queue
 	void enQueue(int item);
-
+	//Pull item from the queue
 	int deQueue();
 
 private:

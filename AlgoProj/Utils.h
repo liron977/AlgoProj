@@ -14,9 +14,13 @@ using namespace std;
 class Utils
 {
 public:
+	//Get the input from the user
 	int getInput();
+	//Check if the user input is valid
 	bool isValidInput(string input);
+	//Prints message if the user input is invalid
 	void invalidInputMessage();
+	//Gets the parameters of the graph (n,s,t)
 	void getGraphData(int& vertexNum, int& source, int& destination);
 
 };

@@ -19,19 +19,20 @@ void Algorithm::shortPathAlgorithm()
 		utils.invalidInputMessage();
 	}
 	g.ReadGraph();
-	g.BFS(&p, &d, s);
-	g.removeEdgeOfNonConsecutiveNumbersVertex(d);
+	g.BFS(&p, &d, s);//BFS on the original graph (G) from vertex s.
+	g.removeEdgeOfNonConsecutiveNumbersVertex(d);//remove from the graph any arc which does not satisfy the condition: d[v]=d[u]+1.
 	
 	Graph gTranspose(n);
-	g.createTransposeGraph(gTranspose);
+	g.createTransposeGraph(gTranspose);//G transpose
+	
 	int* pTranspose = new int[n];
-
 	int* dTranspose = new int[n];
-	gTranspose.BFS(&pTranspose, &dTranspose, t);
-	gTranspose.deleteUnaccessableEdgeFromSource(dTranspose);
+	
+	gTranspose.BFS(&pTranspose, &dTranspose, t);//BFS on the graph G transpose from vertex t.
+	gTranspose.deleteInaccessibleEdgeFromSource(dTranspose);//Remove inaccessible Edge From t (H transpose).
 
 	Graph h(n);
-	gTranspose.createTransposeGraph(h);
+	gTranspose.createTransposeGraph(h);//Transpose to H transpose(create H).
 	h.printGraph();
 	delete[] p;
 	delete[] d;
@@ -50,9 +51,5 @@ void Algorithm::executeShortPathAlgorithm() {
 		chrono::duration_cast<chrono::nanoseconds>(end - start).count();
 	time_taken *= 1e-9;
 	cout<<"Time taken by function shortPathAlgorithm is : "<< fixed <<time_taken << setprecision(9)<< " sec"<< endl;
-	//ofstream myfile("Measure.txt"); // The name of the file
-	//myfile << "Time taken by function shortPathAlgorithm is : " << fixed
-	//	<< time_taken << setprecision(9);
-	//myfile << " sec" << endl;
-	//myfile.close();
+	
 }

@@ -15,9 +15,6 @@ Graph::~Graph()
 {
 
 	delete[] adjList;
-
-	//adjList = NULL;
-     
 	
 }
 
@@ -25,8 +22,6 @@ Graph::~Graph()
 void Graph::MakeEmptyGraph(int n)
 {
 	// delete old adjMatrix 
-	
-	//DeleteAdjMatrix();/TO DO
 
 	adjList = new LinkedList[n];
 
@@ -206,9 +201,11 @@ void Graph::BFS(int** p, int** d, int sourceVertex)
 
 	}
 }
+
 void Graph::removeEdgeOfNonConsecutiveNumbersVertex(int* d)
 {
 	Node* currNode;
+	
 	for (int i = 0; i < vertexNum; i++)
 	{
 		currNode = adjList[i].getHead();
@@ -244,7 +241,7 @@ void Graph::createTransposeGraph(Graph& newTransposeGraph)
 	newTransposeGraph.SetAdjList(newTransposeAdjList);
 
 }
-void Graph::deleteUnaccessableEdgeFromSource(int* d)
+void Graph::deleteInaccessibleEdgeFromSource(int* d)
 {
 	for (int i = 0; i < vertexNum; i++)
 	{

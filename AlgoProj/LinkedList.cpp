@@ -1,19 +1,19 @@
 #include "LinkedList.h"
-
 #include <iostream>
 #include <stdlib.h>
 using namespace std;
-
 
 LinkedList::LinkedList()
 {
 	this->head = nullptr;
 	this->tail = nullptr;
 }
+
 LinkedList::~LinkedList()
 {
 	makeEmpty();
 }
+
 void LinkedList::makeEmpty()
 {
 	if (head != nullptr)
@@ -21,7 +21,6 @@ void LinkedList::makeEmpty()
 		deleteAllElements();
 	}
 	this->head = nullptr;
-	//this->head = NULL;
 	this->tail = nullptr;
 }
 
@@ -89,6 +88,7 @@ void LinkedList::print(int key) const
 
 	}
 }
+
 bool LinkedList::isExist(int value) const
 {
 	Node* currentNode = this->head;
@@ -103,6 +103,7 @@ bool LinkedList::isExist(int value) const
 	}
 	return false;
 }
+
 Node* LinkedList::deleteNode(int value)
 {
 	Node* currentNode = this->head;
@@ -150,14 +151,4 @@ Node* LinkedList::deleteNode(int value)
 	}
 
 }
-//int LinkedList::getLength()const
-//{
-//	int count = 0;
-//	Node* currentNode = this->head;
-//	while (currentNode)
-//	{
-//		count++;
-//		currentNode = currentNode->getNext();
-//	}
-//	return count;
-//}
+

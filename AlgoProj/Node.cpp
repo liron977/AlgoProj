@@ -15,7 +15,7 @@ Node::Node(int item, Node* ptr)
 
 Node::~Node()
 {
- //delete next;
+ 
 }
 
 // getters 

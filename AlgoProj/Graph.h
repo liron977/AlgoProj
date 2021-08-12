@@ -45,7 +45,7 @@ public:
 	//The function recives an object in oreder to save the transpose graph 
 	void createTransposeGraph(Graph& newTransposeGraph);
 	//The function recives an array,and delete all the unaccessable edge from the source
-	void deleteUnaccessableEdgeFromSource(int* d);
+	void deleteInaccessibleEdgeFromSource(int* d);
 	//The function recives an array,and delete all the inaccessible edges of a non consecutive vertices
 	void removeEdgeOfNonConsecutiveNumbersVertex(int* d);
 
